@@ -1,7 +1,7 @@
 # anarchy2036.xyz
 Personal home page
 Stack composta da: (backend -> frontend)
-
+http://anarchy2036.xyz
 - GO
 - NGINX
 - HTML,CSS,JS
