@@ -50,6 +50,25 @@ func getStack(w http.ResponseWriter, r *http.Request) {
 	s := builder.String()
 	io.WriteString(w, s)
 }
+func getRant(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("/hello request received\n")
+	htmxFile, err := os.ReadFile("../static/components/rant.html")
+	if err != nil {
+		fmt.Printf("error reading file")
+	}
+	data := map[string]interface{}{
+		"Name": NAME,
+	}
+	builder := &strings.Builder{}
+	htmlTemplate := string(htmxFile)
+	template := template.Must(template.New("hello").Parse(htmlTemplate))
+	if err := template.Execute(builder, data); err != nil {
+		panic(err)
+	}
+	s := builder.String()
+	io.WriteString(w, s)
+}
+
 func getMinigame1(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("/hello request received\n")
 	htmxFile, err := os.ReadFile("../static/components/minigame/minigame1.html")
@@ -129,6 +148,7 @@ func main() {
 	http.HandleFunc("/hello", getHello)
 	http.HandleFunc("/clock", getClock)
 	http.HandleFunc("/stack", getStack)
+	http.HandleFunc("/rant", getRant)
 	http.HandleFunc("/minigame", getMinigame)
 	http.HandleFunc("/minigame1", getMinigame1)
 	http.HandleFunc("/minigame2", getMinigame2)

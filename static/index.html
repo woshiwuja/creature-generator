@@ -72,11 +72,17 @@
 						hx-swap="innerHTML">MINIGAME</a>
 				</div>
 			</div>
+			<div class="row" style="width: 100%;">
+				<div class="glitch-container  col-4" style="padding-bottom: 10px;">
+					<a hx-trigger="click" hx-get="/rant" hx-target="#content"
+						hx-swap="innerHTML">RANT</a>
+				</div>
+			</div>
 		</div>
 
 
 		<div class="col-8">
-			<div id="content" class="ui-box" style="padding-top:10px;width: 80%;">
+			<div id="content" class="ui-box" style="margin-top:10px;width: 80%;">
 				<p hx-trigger="load" hx-get="/hello" hx-target="#content" hx-swap="innerHTML">
 					Homepage </p>
 			</div>
