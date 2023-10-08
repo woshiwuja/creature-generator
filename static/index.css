@@ -11,7 +11,8 @@ body {
     mix-blend-mode: difference;
     z-index: 1000;   
   } 
-  
+  overflow-y:hidden;
+  overflow-x:hidden;
 }
 .glitch-container{
   height: 70px;
@@ -153,6 +154,9 @@ html {
 	background-size: 100px;
 	color: $theme;
 	height: 100%;
+ overflow-y:hidden;
+  overflow-x:hidden;
+
 }
 p,
 pre {
