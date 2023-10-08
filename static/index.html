@@ -50,39 +50,40 @@
 		<div class="col-4" style="width: auto;">
 			<div class="row" style="width: 100%;">
 				<div class="glitch-container  col-4" style="padding-bottom: 10px;padding-top: 10px;">
-					<a hx-trigger="every 1s" hx-get="/clock" hx-swap="innerHTML">CLOCK</a>
+					<a style="color:#03fcf8;" hx-trigger="every 1s" hx-get="/clock"
+						hx-swap="innerHTML">CLOCK</a>
 
 				</div>
 			</div>
 			<div class="row" style="width: 100%;">
 				<div class="glitch-container  col-4" style="padding-bottom: 10px;">
-					<a hx-trigger="click" hx-get="/hello" hx-target="#content"
-						hx-swap="innerHTML">ABOUT</a>
+					<a style="color:#03fcf8;" hx-trigger="click" hx-get="/hello"
+						hx-target="#content" hx-swap="innerHTML" hx-push-url="true">ABOUT</a>
 				</div>
 			</div>
 			<div class="row" style="width: 100%;">
 				<div class="glitch-container  col-4" style="padding-bottom: 10px;">
-					<a hx-trigger="click" hx-get="/stack" hx-target="#content"
-						hx-swap="innerHTML">STACK</a>
+					<a style="color:#03fcf8;" a hx-trigger="click" hx-get="/stack"
+						hx-target="#content" hx-swap="innerHTML" hx-push-url="true">STACK</a>
 				</div>
 			</div>
 			<div class="row" style="width: 100%;">
 				<div class="glitch-container  col-4" style="padding-bottom: 10px;">
-					<a hx-trigger="click" hx-get="/minigame" hx-target="#content"
-						hx-swap="innerHTML">MINIGAME</a>
+					<a style="color:#03fcf8;" hx-trigger="click" hx-get="/minigame"
+						hx-target="#content" hx-swap="innerHTML" hx-push-url="true">MINIGAME</a>
 				</div>
 			</div>
 			<div class="row" style="width: 100%;">
 				<div class="glitch-container  col-4" style="padding-bottom: 10px;">
-					<a hx-trigger="click" hx-get="/rant" hx-target="#content"
-						hx-swap="innerHTML">RANT</a>
+					<a style="color:#03fcf8;" hx-trigger="click" hx-get="/rant" hx-target="#content"
+						hx-swap="innerHTML" hx-push-url="true">RANT</a>
 				</div>
 			</div>
 		</div>
 
 
 		<div class="col-8">
-			<div id="content" class="ui-box" style="margin-top:10px;width: 80%;">
+			<div id="content" class="ui-box " style="margin-top:10px;width: 80%;">
 				<p hx-trigger="load" hx-get="/hello" hx-target="#content" hx-swap="innerHTML">
 					Homepage </p>
 			</div>
