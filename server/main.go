@@ -50,9 +50,10 @@ func getStack(w http.ResponseWriter, r *http.Request) {
 	s := builder.String()
 	io.WriteString(w, s)
 }
-func getRant(w http.ResponseWriter, r *http.Request) {
+
+func getBlog(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("/hello request received\n")
-	htmxFile, err := os.ReadFile("../static/components/rant.html")
+	htmxFile, err := os.ReadFile("../static/components/blog.html")
 	if err != nil {
 		fmt.Printf("error reading file")
 	}
@@ -68,7 +69,60 @@ func getRant(w http.ResponseWriter, r *http.Request) {
 	s := builder.String()
 	io.WriteString(w, s)
 }
-
+func getChart(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("/hello request received\n")
+	htmxFile, err := os.ReadFile("../static/components/chart.html")
+	if err != nil {
+		fmt.Printf("error reading file")
+	}
+	data := map[string]interface{}{
+		"Name": NAME,
+	}
+	builder := &strings.Builder{}
+	htmlTemplate := string(htmxFile)
+	template := template.Must(template.New("hello").Parse(htmlTemplate))
+	if err := template.Execute(builder, data); err != nil {
+		panic(err)
+	}
+	s := builder.String()
+	io.WriteString(w, s)
+}
+func getBlogPost1(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("/hello request received\n")
+	htmxFile, err := os.ReadFile("../static/components/blog/post1.html")
+	if err != nil {
+		fmt.Printf("error reading file")
+	}
+	data := map[string]interface{}{
+		"Name": NAME,
+	}
+	builder := &strings.Builder{}
+	htmlTemplate := string(htmxFile)
+	template := template.Must(template.New("hello").Parse(htmlTemplate))
+	if err := template.Execute(builder, data); err != nil {
+		panic(err)
+	}
+	s := builder.String()
+	io.WriteString(w, s)
+}
+func getBlogPost2(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("/hello request received\n")
+	htmxFile, err := os.ReadFile("../static/components/blog/post2.html")
+	if err != nil {
+		fmt.Printf("error reading file")
+	}
+	data := map[string]interface{}{
+		"Name": NAME,
+	}
+	builder := &strings.Builder{}
+	htmlTemplate := string(htmxFile)
+	template := template.Must(template.New("hello").Parse(htmlTemplate))
+	if err := template.Execute(builder, data); err != nil {
+		panic(err)
+	}
+	s := builder.String()
+	io.WriteString(w, s)
+}
 func getMinigame1(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("/hello request received\n")
 	htmxFile, err := os.ReadFile("../static/components/minigame/minigame1.html")
@@ -148,7 +202,10 @@ func main() {
 	http.HandleFunc("/hello", getHello)
 	http.HandleFunc("/clock", getClock)
 	http.HandleFunc("/stack", getStack)
-	http.HandleFunc("/rant", getRant)
+	http.HandleFunc("/blog/post1", getBlogPost1)
+	http.HandleFunc("/blog/post2", getBlogPost2)
+	http.HandleFunc("/blog", getBlog)
+	http.HandleFunc("/chart", getChart)
 	http.HandleFunc("/minigame", getMinigame)
 	http.HandleFunc("/minigame1", getMinigame1)
 	http.HandleFunc("/minigame2", getMinigame2)

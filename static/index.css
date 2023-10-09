@@ -1,19 +1,9 @@
-body {
+body{
   min-height: 100vh;
   background-color: black; /* For browsers that do not support gradients */
   background-image: linear-gradient(180deg, darkred, black);
-  cursor: none;
-  
-  .cursor {
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    mix-blend-mode: difference;
-    z-index: 1000;   
-  } 
-  overflow-y:hidden;
-  overflow-x:hidden;
+   
+    
 }
 .glitch-container{
   height: 70px;
@@ -150,13 +140,11 @@ $font-mono: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace
 html {
 	font-family: $font-mono;
 	text-shadow: 0 0 5px rgba(255,255,255,0.3);
-	background-color: darken($theme, 47%);
-	background-image: url(http://api.thumbr.it/whitenoise-200x200.png?background=00000000&noise=626262&density=15&opacity=15);
-	background-size: 100px;
+  background-image: linear-gradient(180deg, #3d0d0d, black);
 	color: $theme;
 	height: 100%;
- overflow-y:hidden;
-  overflow-x:hidden;
+  margin: auto; 
+  
 
 }
 p,
