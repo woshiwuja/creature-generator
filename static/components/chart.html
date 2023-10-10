@@ -1,7 +1,18 @@
-<canvas id="canvas"></canvas>
+<div style="display: flex;">
+  <div style="width: 800px; height: 600px; flex: 1;">
+    <canvas width="800px" height="600px" id="canvas"></canvas>
+  </div>
+  <div style="width: 400px; height: 600px; flex: 1;">
+    <a>
+      Il grafico viene completamente generato dal backend, solo la rappresentazione grafica e' a carico del browser. Non
+      vengono effettuate chiamate http aggiuntive ne idratazione con json. Il JSON per i dati viene creato assieme allo
+      script
+    </a>
+  </div>
+</div>
 <script>
-new Chart(document.getElementById("canvas"),
-{
+  new Chart(document.getElementById("canvas"),
+    {
       type: 'bar',
       options: {
         animation: false,
@@ -10,19 +21,19 @@ new Chart(document.getElementById("canvas"),
             display: false
           },
           tooltip: {
-            enabled: true 
+            enabled: true
           }
         }
       },
       data: {
-        
+
         labels: [{{range .}}"{{.Username}}",{{end}}],
-        datasets: [
-          {
-            label: 'username',
-            data: [{{range .}}{{.EventCount}},{{end}}],
-            
-            backgroundColor: "rgba(59, 222, 255, 0.7)"
+    datasets: [
+    {
+      label: 'username',
+      data: [{{range .}}{{.EventCount}}, {{end}}],
+
+    backgroundColor: "rgba(59, 222, 255, 0.7)"
           }
         ]
       }
