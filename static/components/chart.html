@@ -1,14 +1,5 @@
 <canvas id="canvas"></canvas>
 <script>
-var data = [
-    { year: 2010, count: 10 },
-    { year: 2011, count: 20 },
-    { year: 2012, count: 15 },
-    { year: 2013, count: 25 },
-    { year: 2014, count: 22 },
-    { year: 2015, count: 30 },
-    { year: 2016, count: 28 },
-  ];
 new Chart(document.getElementById("canvas"),
 {
       type: 'bar',
@@ -19,16 +10,19 @@ new Chart(document.getElementById("canvas"),
             display: false
           },
           tooltip: {
-            enabled: false
+            enabled: true 
           }
         }
       },
       data: {
-        labels: data.map(row => row.year),
+        
+        labels: [{{range .}}"{{.Username}}",{{end}}],
         datasets: [
           {
-            label: 'Acquisitions by year',
-            data: data.map(row => row.count)
+            label: 'username',
+            data: [{{range .}}{{.EventCount}},{{end}}],
+            
+            backgroundColor: "rgba(59, 222, 255, 0.7)"
           }
         ]
       }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -13,21 +14,24 @@ import (
 
 const NAME string = "anarchy2036"
 const SRV_PORT string = ":2036"
-
+type dataStruct struct {
+	Username string `json:"username"`
+	EventCount int `json:"event_count"`
+}
 func getHello(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("/hello request received\n")
 	htmxFile, err := os.ReadFile("../static/components/hello.html")
 	if err != nil {
 		fmt.Printf("error reading file")
 	}
-	data := map[string]interface{}{
+		data := map[string]interface{}{
 		"Name": NAME,
 	}
 	builder := &strings.Builder{}
 	htmlTemplate := string(htmxFile)
 	template := template.Must(template.New("hello").Parse(htmlTemplate))
 	if err := template.Execute(builder, data); err != nil {
-		panic(err)
+		http.Error(w, "Failed to execute template", http.StatusInternalServerError)
 	}
 	s := builder.String()
 	io.WriteString(w, s)
@@ -50,7 +54,11 @@ func getStack(w http.ResponseWriter, r *http.Request) {
 	s := builder.String()
 	io.WriteString(w, s)
 }
-
+func getApiChart(w http.ResponseWriter, r *http.Request){
+	chartData := []dataStruct {{Username: "root",EventCount: 24,},{Username:"admin",EventCount:12}}
+	w.Header().Set("Content-type","application/json")
+	json.NewEncoder(w).Encode(chartData)
+}
 func getBlog(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("/hello request received\n")
 	htmxFile, err := os.ReadFile("../static/components/blog.html")
@@ -70,18 +78,31 @@ func getBlog(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, s)
 }
 func getChart(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("/hello request received\n")
+	fmt.Printf("/chart request received\n")
+	data,err := http.Get("http://localhost:2036/api/chartdata")
+	if err != nil {
+		fmt.Printf("cant load data :(")
+	}
 	htmxFile, err := os.ReadFile("../static/components/chart.html")
 	if err != nil {
 		fmt.Printf("error reading file")
 	}
-	data := map[string]interface{}{
-		"Name": NAME,
+	b, err := io.ReadAll(data.Body)
+	
+	if err != nil{
+		fmt.Printf("cant read body")
 	}
+	fmt.Printf("%s",string(b))
+	var chart []dataStruct
+	json.Unmarshal(b, &chart)
+	/*chartDataMap := map[string]interface{}{
+		"username":
+		"event_count":chart.EventCount,
+	}*/
 	builder := &strings.Builder{}
 	htmlTemplate := string(htmxFile)
-	template := template.Must(template.New("hello").Parse(htmlTemplate))
-	if err := template.Execute(builder, data); err != nil {
+	template := template.Must(template.New("chart").Parse(htmlTemplate))
+	if err := template.Execute(builder, chart); err != nil {
 		panic(err)
 	}
 	s := builder.String()
@@ -206,6 +227,7 @@ func main() {
 	http.HandleFunc("/blog/post2", getBlogPost2)
 	http.HandleFunc("/blog", getBlog)
 	http.HandleFunc("/chart", getChart)
+	http.HandleFunc("/api/chartdata", getApiChart)
 	http.HandleFunc("/minigame", getMinigame)
 	http.HandleFunc("/minigame1", getMinigame1)
 	http.HandleFunc("/minigame2", getMinigame2)
