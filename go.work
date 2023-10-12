@@ -1,0 +1,6 @@
+go 1.21.1
+use ./paths
+use ./server
+use ./db_conn
+use ./queries
+use ./models

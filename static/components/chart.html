@@ -30,10 +30,9 @@
         labels: [{{range .}}"{{.Username}}",{{end}}],
     datasets: [
     {
-      label: 'username',
+      label: 'Event count',
       data: [{{range .}}{{.EventCount}}, {{end}}],
-
-    backgroundColor: "rgba(59, 222, 255, 0.7)"
+      backgroundColor: "rgba(227, 102, 110, 0.7)"
           }
         ]
       }
