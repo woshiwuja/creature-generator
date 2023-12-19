@@ -24,3 +24,7 @@ go build main.go
 Requisiti:
 Go > 1.20
 Per problemi con versione rimuover go.mod
+
+
+Ultimo commit ripulisce la repo. 
+Si puo usare come base per nuova app. il sito verra spostato su un altra repo
