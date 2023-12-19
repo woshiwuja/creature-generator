@@ -1,3 +1,3 @@
-module anarchy2036/paths
+module creatures/paths
 
 go 1.21.1

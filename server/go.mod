@@ -1,3 +1,3 @@
-module anarchy2036/main
+module creatures/main
 
 go 1.21.1

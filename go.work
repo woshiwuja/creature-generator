@@ -1,6 +1,7 @@
-go 1.21.1
+go 1.21.5
+
 use ./paths
+
+use ./creature
+
 use ./server
-use ./db_conn
-use ./queries
-use ./models
