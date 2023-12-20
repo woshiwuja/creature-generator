@@ -4,16 +4,18 @@ import (
 	"math/rand"
 )
 
-var animals = [10]string{"bull",
+var animals = [...]string{"ox",
 	"tiger",
 	"bat",
 	"lion",
-	"snake",
+	"lizard",
 	"wolf",
 	"spider",
 	"eagle",
 	"sheep",
 	"fish",
+	"man",
+	"sloth",
 }
 
 var leg_num = [...]int{2, 4}
@@ -45,8 +47,8 @@ var natures = [...]string{
 	"serious",
 }
 
-var radix = [...]string{"at", "xer", "apros", "leas"}
-var prefix = [...]string{"ptero", "xae", "loax", "awe"}
+var prefix = [...]string{"ptero", "xae", "loax", "awe", "enon"}
+var radix = [...]string{"at", "xer", "apros", "leas", "reas"}
 var suffix = [...]string{"don", "mos", "lia", "as", "saur"}
 
 var habitats = [...]string{
@@ -83,9 +85,9 @@ func NewName() string {
 func NewCreature() Creature {
 	var generatedCreature Creature
 	generatedCreature.Name = NewName()
-	generatedCreature.Head = animals[rand.Intn(10)]
-	generatedCreature.Body = animals[rand.Intn(10)]
-	generatedCreature.Legs = animals[rand.Intn(10)]
+	generatedCreature.Head = animals[rand.Intn(len(animals))]
+	generatedCreature.Body = animals[rand.Intn(len(animals))]
+	generatedCreature.Legs = animals[rand.Intn(len(animals))]
 	generatedCreature.Leg_num = leg_num[rand.Intn(2)]
 	generatedCreature.Habitat = habitats[rand.Intn(6)]
 	generatedCreature.Nature = natures[rand.Intn(24)]

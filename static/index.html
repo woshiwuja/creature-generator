@@ -13,17 +13,18 @@
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
   <link rel="stylesheet" href="index.css">
   </link>
 </head>
+<h1 style="text-align: center;"> RANDOM CREATURE GENERATOR</h1>
 
 <body>
-  <button type="button" class="btn btn-dark" hx-get="/random_creature" hx-swap="beforeend"
-    hx-target="#creature-data">Create new creature</button>
+  <div style="text-align: center;">
+    <button type="button" class="btn btn-dark" hx-get="/random_creature" hx-swap="afterbegin"
+      hx-target="#creature-data">Create new creature</button>
+  </div>
   <div id="creature-data" class="box">
   </div>
 </body>
-<script src="index.js"></script>
 
 </html>

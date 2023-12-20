@@ -6,8 +6,9 @@ import (
 	"net/http"
 )
 
-const SRV_PORT string = "8190"
-const SRV_STRING string = "http://localhost:" + SRV_PORT
+const SRV_PORT string = ":8190"
+const SRV_IP string = "localhost"
+const SRV_STRING string = "http://" + SRV_IP + SRV_PORT
 
 func main() {
 	//open server
@@ -16,7 +17,7 @@ func main() {
 	http.HandleFunc("/random_creature", paths.GetRandomCreature)
 	fmt.Printf("server open at %s", SRV_STRING)
 
-	err := http.ListenAndServe(":"+SRV_PORT, nil)
+	err := http.ListenAndServe(SRV_PORT, nil)
 	if err != nil {
 		fmt.Printf("cant open server %v", err)
 	}
