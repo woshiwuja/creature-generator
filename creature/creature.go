@@ -4,7 +4,7 @@ import (
 	"math/rand"
 )
 
-var head = [10]string{"bull",
+var animals = [10]string{"bull",
 	"tiger",
 	"bat",
 	"lion",
@@ -16,33 +16,7 @@ var head = [10]string{"bull",
 	"fish",
 }
 
-var body = [10]string{
-	"bull",
-	"tiger",
-	"bat",
-	"lion",
-	"snake",
-	"wolf",
-	"spider",
-	"eagle",
-	"sheep",
-	"fish",
-}
-
-var legs = [10]string{
-	"bull",
-	"tiger",
-	"bat",
-	"lion",
-	"snake",
-	"wolf",
-	"spider",
-	"eagle",
-	"sheep",
-	"fish",
-}
-
-var leg_num = [...]int{2, 4, 6, 8, 10}
+var leg_num = [...]int{2, 4}
 
 var natures = [...]string{
 	"hardy",
@@ -70,13 +44,18 @@ var natures = [...]string{
 	"naive",
 	"serious",
 }
+
+var radix = [...]string{"at", "xer", "apros", "leas"}
+var prefix = [...]string{"ptero", "xae", "loax", "awe"}
+var suffix = [...]string{"don", "mos", "lia", "as", "saur"}
+
 var habitats = [...]string{
 	"tundra",
 	"evergreen forests",
 	"seasonal forests",
 	"grasslands",
 	"deserts",
-	"tropical Rainforests",
+	"tropical rainforests",
 }
 
 var class = [...]string{
@@ -97,13 +76,17 @@ type Creature struct {
 	Class   string
 }
 
+func NewName() string {
+	return prefix[rand.Intn(len(prefix))] + radix[rand.Intn(len(radix))] + suffix[rand.Intn(len(suffix))]
+}
+
 func NewCreature() Creature {
 	var generatedCreature Creature
-	generatedCreature.Name = "PLACEHOLDER"
-	generatedCreature.Head = head[rand.Intn(10)]
-	generatedCreature.Body = body[rand.Intn(10)]
-	generatedCreature.Legs = legs[rand.Intn(10)]
-	generatedCreature.Leg_num = leg_num[rand.Intn(5)]
+	generatedCreature.Name = NewName()
+	generatedCreature.Head = animals[rand.Intn(10)]
+	generatedCreature.Body = animals[rand.Intn(10)]
+	generatedCreature.Legs = animals[rand.Intn(10)]
+	generatedCreature.Leg_num = leg_num[rand.Intn(2)]
 	generatedCreature.Habitat = habitats[rand.Intn(6)]
 	generatedCreature.Nature = natures[rand.Intn(24)]
 	generatedCreature.Class = class[rand.Intn(4)]

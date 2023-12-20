@@ -3,3 +3,12 @@ body {
   background-color: slategrey;
   /* For browsers that do not support gradients */
 }
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box>* {
+  flex: 1 1 30%;
+}
