@@ -1,6 +1,16 @@
 body {
-  background-color: slate;
+  background-color: #141019;
+  background: radial-gradient(at 50% -20%, #908392, #e3d15f) fixed;
   /* For browsers that do not support gradients */
+}
+
+@font-face {
+  font-family: testfont;
+  src: url("/fonts/DxSitrus-Expanded.otf") format("opentype");
+}
+
+.testfont {
+  font-family: 'testfont';
 }
 
 .box {

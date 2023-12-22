@@ -13,3 +13,9 @@ go build main.go
 Requisiti:
 Go > 1.20
 Per problemi con versione rimuovere go.mod
+
+
+# TODO
+```
+- [ ] Add midjourney API generation. (not up to me) 
+```

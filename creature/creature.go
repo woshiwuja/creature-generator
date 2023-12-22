@@ -68,6 +68,7 @@ var class = [...]string{
 }
 
 type Creature struct {
+	Img     string
 	Name    string
 	Head    string
 	Body    string
@@ -82,8 +83,18 @@ func NewName() string {
 	return prefix[rand.Intn(len(prefix))] + radix[rand.Intn(len(radix))] + suffix[rand.Intn(len(suffix))]
 }
 
+/*func NewCreatureImage(generatedCreature Creature) (downloadDirectory string) {
+	var prompt string
+	//connect to midjourney
+
+	return downloadDirectory
+}*/
+
 func NewCreature() Creature {
 	var generatedCreature Creature
+
+	generatedCreature.Img = "placeholder"
+
 	generatedCreature.Name = NewName()
 	generatedCreature.Head = animals[rand.Intn(len(animals))]
 	generatedCreature.Body = animals[rand.Intn(len(animals))]
@@ -92,5 +103,7 @@ func NewCreature() Creature {
 	generatedCreature.Habitat = habitats[rand.Intn(6)]
 	generatedCreature.Nature = natures[rand.Intn(24)]
 	generatedCreature.Class = class[rand.Intn(4)]
+
+	//	generatedCreature.Img = NewCreatureImage(generatedCreature)
 	return generatedCreature
 }

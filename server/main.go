@@ -15,6 +15,7 @@ func main() {
 
 	http.Handle("/", http.FileServer(http.Dir("../static")))
 	http.HandleFunc("/random_creature", paths.GetRandomCreature)
+	http.Handle("/fonts/", http.StripPrefix("/fonts/", http.FileServer(http.Dir("../fonts/"))))
 	fmt.Printf("server open at %s", SRV_STRING)
 
 	err := http.ListenAndServe(SRV_PORT, nil)

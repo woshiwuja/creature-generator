@@ -11,7 +11,7 @@ import (
 ) //THIS WORKS
 func GetRandomCreature(w http.ResponseWriter, r *http.Request) {
 	creature := creature.NewCreature()
-	fmt.Printf("/hello request received\n")
+	fmt.Printf("/random_creature request received\n")
 	htmxFile, err := os.ReadFile("../static/components/creature.html")
 	if err != nil {
 		fmt.Printf("error reading file")

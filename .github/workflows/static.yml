@@ -44,7 +44,7 @@ jobs:
           # optional, default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
     # Used to specify whether caching is needed. Set to true, if you'd like to enable caching.
           cache: false # optional, default is true
-      - run: go server/main.go
+      - run: go run server/main.go
    # Used to specify the path to a dependency file - go.sum
      # optional
     # Target architecture for Go to use. Examples: x86, x64. Will use system architecture by default.
