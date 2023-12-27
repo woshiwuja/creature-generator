@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-const SRV_PORT string = ":8190"
+const SRV_PORT string = ":80"
 const SRV_IP string = "localhost"
 const SRV_STRING string = "http://" + SRV_IP + SRV_PORT
 
