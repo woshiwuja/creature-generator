@@ -8,7 +8,8 @@ import (
 	"os"
 	"strings"
 	"text/template"
-) //THIS WORKS
+)
+
 func GetRandomCreature(w http.ResponseWriter, r *http.Request) {
 	creature := creature.NewCreature()
 	fmt.Printf("/random_creature request received\n")
@@ -22,4 +23,14 @@ func GetRandomCreature(w http.ResponseWriter, r *http.Request) {
 	template.Execute(builder, creature)
 	s := builder.String()
 	io.WriteString(w, s)
+}
+
+func GetAbout(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("/random_creature request received\n")
+	htmlFile, err := os.ReadFile("../static/components/about.html")
+	if err != nil {
+		fmt.Printf("error reading file")
+	}
+	htmlTemplate := string(htmlFile)
+	io.WriteString(w, htmlTemplate)
 }
