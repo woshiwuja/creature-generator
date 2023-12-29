@@ -4,7 +4,7 @@ Live Demo: http://anarchy2036.xyz/create
 per far partire il tutto:
 ```
 git clone https://github.com/Woshiwuja/creature-generator.git
-cd anarchy2036.xyz
+cd creature-generator
 cd server
 go run main.go
 ```
